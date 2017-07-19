@@ -1,45 +1,45 @@
 interface IPair<T>
 {
-    T Row { get; set}
+    T Right { get; set}
 
-    T Column { get; set; }
+    T Left { get; set; }
 }
 
 public struct Pair<T>: IPair<T>
 {
-    public Pair(T row, T column)
+    public Pair(T right, T left)
     {
-        row = row;
-        column = column;    
+        right = right;
+        left = left;    
     }
 
-    public T Row
-    {
-        get
-        {
-            return row;
-        }
-        set
-        {
-            row = value;
-        }
-    }
-
-    private T row;
-
-    public T Column
+    public T Right
     {
         get
         {
-            return column;
+            return right;
         }
         set
         {
-            column = value;
+            right = value;
         }
     }
 
-    private T column;
+    private T right;
+
+    public T Left
+    {
+        get
+        {
+            return left;
+        }
+        set
+        {
+            left = value;
+        }
+    }
+
+    private T left;
 }
 
 /*
@@ -56,11 +56,39 @@ public struct Pair<T>: IPair<T>
 
 public struct Pair<T>: IPair<T>
 {
-  // ERROR:  Field 'Pair<T>._second' must be fully assigned
-  //         before control leaves the constructor
-  public Pair(T first)
-  {
-     _First = first;
-     _Second = default(T);
-  }
+    // ERROR:  Field 'Pair<T>._second' must be fully assigned
+    //         before control leaves the constructor
+    public Pair(T left)
+    {
+        left = left;
+        right = default(T);
+    }
+
+    public T Right
+    {
+        get
+        {
+            return right;
+        }
+        set
+        {
+            right = value;
+        }
+    }
+
+    private T right;
+
+    public T Left
+    {
+        get
+        {
+            return left;
+        }
+        set
+        {
+            left = value;
+        }
+    }
+
+    private T left;
 }

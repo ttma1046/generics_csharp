@@ -15,33 +15,34 @@ public class BinaryTree<T> where T: System.IComparable<T>
 
     public Pair<BinaryTree<T>> SubItems
     {
-        get { return _SubItems; }
-        set { 
-            IComparable<T> first;
+        get { return subItems; }
+        set 
+        { 
+            IComparable<T> left;
             // ERROR: Cannot implicitly convert type...
-            // first = value.First;  // Explicit cast required
+            // left = value.Left.Item;  // Explicit cast required
 
 
             // Execution-time error: InvalidCastException if T does not implement the IComparable inferface.
-            // first = (IComparable<T>)value.First;
+            // left = (IComparable<T>)value.Left.Item;
 
-            first = value.First;
+            left = value.Left.Item;
 
-            if (first.CompareTo(value.Second) < 0)
+            if (left.CompareTo(value.Right.Item) < 0)
             {
-                // first is less than second.
+                // left is less than right.
                 // ...
             }
             else
             {
-                // first and second are the same or
-                // second is less than first.
+                // left and right are the same or
+                // right is less than left.
                 // ...
             }
 
-            _SubItems = value;
+            subItems = value;
         }
     }
 
-    private Pair<BinaryTree<T>> _SubItems;
+    private Pair<BinaryTree<T>> subItems;
 }
